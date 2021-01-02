@@ -19,6 +19,8 @@ _note: It is a good idea to use a premium SDcard from a reputable manufacturer s
     * If your network automatically assigns DNS hostnames, it may simply show up as `mainsailos`
     * Failing these two options, you may need to check your router's DHCP server, and find out what IP address as been assigned to the device.
 
+### Next: [Firmware Flashing](./software#firmware-flashing)
+
 ## Mainsail Manual Installation
 
 The Mainsail manuall installation process is documented on the [Mainsail wiki](https://meteyou.github.io/mainsail/setup/)
