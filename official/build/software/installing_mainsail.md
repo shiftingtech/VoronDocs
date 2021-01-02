@@ -12,18 +12,18 @@ To install Mainsail on a Raspberry Pi:
 _note: It is a good idea to use a premium SDcard from a reputable manufacturer such as Sandisk, Kingston or Samsung. Low end cards will often fail quickly when used in this application_
 
 4. If you will be using wifi, edit the file `mainsailos-wpa-supplicant.txt` with your Wifi information. If you are having trouble seeing this file on the sdcard, try removing it and re-inserting it into your card reader.
-5. Make sure that your MCU(s) is connected to your pi, and your ethernet cable, if applicable.
-5. Insert the SDcard into your Pi, and power on the Pi.  If you will be using wired networking, make sure your ethernet cable is connected.  
+5. Make sure that your MCU(s) is connected to your pi, If you will be using wired networking, also make sure your ethernet cable is connected.
+5. Insert the SDcard into your Pi, and power on the Pi.    
 6. Find your pi on the network, and [ssh](ssh.md) into it.
     * If your network supports bonjour, the pi should show up as `mainsailos.local`
     * If your network automatically assigns DNS hostnames, it may simply show up as `mainsailos`
     * Failing these two options, you may need to check your router's DHCP server, and find out what IP address as been assigned to the device.
 
-### Next: [Firmware Flashing](./software#firmware-flashing)
+### Next: [Firmware Flashing](./README.md#firmware-flashing)
 
 ## Mainsail Manual Installation
 
-The Mainsail manuall installation process is documented on the [Mainsail wiki](https://meteyou.github.io/mainsail/setup/)
+The Mainsail manual installation process is documented on the [Mainsail wiki](https://meteyou.github.io/mainsail/setup/)
 
 ---
 ### Back: [Software Installation](./README.md)
