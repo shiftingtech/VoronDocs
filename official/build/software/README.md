@@ -1,66 +1,38 @@
 
 # Software Installation
 
-There are two mainstream options for software: [OctoPrint](#octoprint) and [Mainsail](#mainsail).  Both are supported, however Mainsail was developed specifically for the Voron environment.
+All stock Voron printers run on the [Klipper](https://klipper3d.com) firmware. However, there are a few different web interfaces available for managing your printer.
+The Voron Project recommends using Mainsail or Fluidd, although it is also possible to use Octoprint.   Mainsail and Fluidd are both developed specifically for Klipper based printers, whereas Octoprint is a more general-use platform. 
 
-## OctoPrint
+_Note: If you are using a Pi Zero, such as in the Voron Legacy, you must use Mainsail or Fluidd_
 
-Install OctoPrint on the Raspberry Pi by following the instructions found at [OctoPrint Download](https://octoprint.org/download/)
+| Mainsail | Fluidd | Octoprint |
+|--|--|--|
+|![Mainsail Screenshot](images/mainsail.png)|![Fluidd Screenshot](images/fluidd.png)|![Octoprint screenshot](images/octoprint.png)|
 
-Once installed, ssh to your Raspberry Pi (Using PuTTY on Windows or the terminal on MacOS) at the address `pi@octopi.local`.  The default password is 'raspberry'.  It is highly recommended to change the default password using the following process:
+## Installation
 
-* Login to Raspberry Pi
-* `sudo raspi-config` (password may be requested again)
-* Select "Change User Password" to change the password
+### Mainsail
 
-### Klipper Octoprint Configuration
+Mainsail is a lightweight web interface for Klipper and other subsystems.  It does not support plugins but generally doesn't need to.
 
-_Make sure to only do the testing after Klipper is installed_
+#### [Installing Mainsail](./installing_mainsail.md)
 
-The OctoPrint web server needs to be configured to communicate with the Klipper host software. Using a web browser, login to the OctoPrint web page and then configure the following items:
+### Fluidd
 
-1. Navigate to the Settings tab (the wrench icon at the top of the page)
-2. Under "Serial Connection" in "Additional serial ports" add "/tmp/printer" then click "Save"
-3. Open Settings tab and under "Serial Connection" change the "Serial Port" setting to "/tmp/printer"
-4. In the Settings tab, navigate to the "Behavior" sub-tab and select the "Cancel any ongoing prints but stay connected to the printer" option, then click “Save”
-5. From the main page, under the "Connection" section (at the top left of the page) make sure the "Serial Port" is set to "/tmp/printer" and click "Connect". (If "/tmp/printer" is not an available selection then try reloading the page)
-6. Once connected, navigate to the "Terminal" tab and type "status" (without the quotes) into the command entry box and click "Send". The terminal window will likely report there is an error opening the config file - that means OctoPrint is successfully communicating with Klipper.
+Fluidd is a lightweight web interface for Klipper and other subsystems that is very similar to Mainsail but has a different look and feel.  It also does not support plugins.
 
+#### [Installing Fluidd](./installing_fluidd.md)
 
-## Recommended OctoPrint Plugins
-* OctoKlipper
-* Themeify
-* TerminalCommands
-* Bed Level Visualizer
-* Print Time Genius
+### Octoprint
 
+Octoprint has been a popular system for many years.  It supports plugins but also requires substantial CPU and memory.
 
-## Mainsail
+#### [Installing Octoprint](./installing_octoprint.md)
 
-Mainsail is a lightweight web interface for Klipper and other subsystems.  It does not support plugins but generally doesn't need to.  To install Mainsail, follow the [instructions on the Mainsail page](https://meteyou.github.io/mainsail/).
+## Firmware Flashing
 
-**Do not install Mainsail onto an OctoPi image!**
-
-## Klipper
-
-_External References:_
-
-* [Klipper Installation Instructions](https://github.com/KevinOConnor/klipper/blob/master/docs/Installation.md)
-* [SKR Installation Instructions](https://3dprintbeginner.com/install-klipper-on-skr-1-3-speed-up-your-prints/)
-
-### Installation
-
-_If installing Mainsail and using that process, skip just the installation step as it will already be covered._
-
-Once at the command line of the Raspberry Pi, run the following commands to download and install the latest version of Klipper:
-
-```
-cd
-git clone https://github.com/KevinOConnor/klipper
-./klipper/scripts/install-octopi.sh
-```
-
-### Firmware Flashing
+At this point Klipper will be installed on the Raspberry Pi.  The next step is to compile and install the Klipper firmware onto the controller(s).
 
 * [SKR 1.3](./skr13_klipper.md)
 * [SKR 1.4](./skr13_klipper.md)
@@ -68,37 +40,9 @@ git clone https://github.com/KevinOConnor/klipper
 * [SKR mini e3 V2.0](./miniE3_v20_klipper.md)
 * [FLY FLYF407ZG](./flyf407zg_klipper.md)
 
-
-### Klipper Troubleshooting and Common Errors
-
-#### Retrieve Log File
-
-The Klippy log file (/tmp/klippy.log) contains debugging information.
-Execute the `M112` command in the OctoPrint terminal window immediately after the undesirable event.
-
-There is also a logextract.py script that may be useful when analyzing a micro-controller shutdown or similar problem.  To use it follow this procedure:
-
-```
-mkdir work_directory
-cd work_directory
-cp /tmp/klippy.log .
-~/klipper/scripts/logextract.py ./klippy.log
-```
-
-The script will extract the printer config file and MCU shutdown information to work_directory.
-
-#### TMC UART Error
-
-This appears when the communication between the TMC drivers and the MCU is not working. Typically this means that you have not powered the SKR board with 12-24V (TMC drivers didn’t boot), you haven’t plugged in the TMC steppers to the correct spots, or you forgot to add or remove a jumper as detailed above.
-
-#### ADC Error
-
-ADC stands for “Analog to Digital Converter” and is what is used to convert thermistor readings to temperatures for your hotend and heated bed. As a safety precaution, if Klipper is expecting a thermistor to be plugged in but it is reading an invalid reading (no thermistor = open, or 0 ohms for a shorted wire as closed), it will go in to this shut down mode. Double check to make sure your thermistors are plugged in to the correct boards and plugs.
-
-#### Unable to Connect
-
-Once the underlying issue is corrected, use the `FIRMWARE_RESTART` command to reset the firmware, reload the config, and restart the host software. Check MCU IDs match your printer.cfg.  _Make sure you get the paths right!_
-
+> **Related Documentation:**
+> 
+> [Klipper Common Errors](../../../community/troubleshooting/120decibell/klipper_common_errors.md)
 
 ---
 ### Next: [Software Configuration](./configuration.md)
