@@ -87,8 +87,8 @@ Locate the section starting with [mcu].  The V2 will have an additional section 
 **Note:** If the device identifier has the word 'marlin' in it, the Klipper firmware is not loaded properly.  Go back and [re-load the Klipper firmware](./software#firmware-flashing) before continuing.
 
 * Copy the device ID (e.g. _usb-Klipper\_lpc1768\_1FB0000802094AAF07825E5DC52000F5-if00_) from the terminal window and paste into a temporary text file.
-*  [Open](#editing-printer.cfg) the configuration file and navigate to the **[mcu]** section.  Modiffy the "serial: /dev/serial" line and paste in the controller path so that is looks like the following: `serial: /dev/serial/by-id/usb-Klipper_lpc1768_1FB0000802094AAF07825E5DC52000F5-if00`
-*  Exit the text editor with CTRL-X  and save when prompted.
+*  [Open](#editing-printercfg) the configuration file and navigate to the **[mcu]** section.  Modiffy the "serial: /dev/serial" line and paste in the controller path so that is looks like the following: `serial: /dev/serial/by-id/usb-Klipper_lpc1768_1FB0000802094AAF07825E5DC52000F5-if00`
+*  Exit the text editor, and save when prompted.
 
 ### Update Second Controller Path (V2)
 
@@ -103,12 +103,12 @@ This section only applies to printers with more than one controller.
 **Note:** If the device identifier has the word 'marlin' in it, the Klipper firmware is not loaded properly.  Go back and re-load the Klipper firmware before continuing.
 
 * Identify the new device ID (e.g. _usb-Klipper\_lpc1768\_0650000AA39C48AFABD4395DC22000F5-if00_) and copy from the terminal window and paste into a temporary text file.
-*  Open the configurtion file with `nano ~/printer.cfg` and navigate to the **[mcu z]** section.  Modiffy the "serial: /dev/serial" line and paste in the controller path so that is looks like the following: `serial: /dev/serial/by-id/usb-Klipper_lpc1768_0650000AA39C48AFABD4395DC22000F5-if00`
+*  [Open](#editing-printercfg) the configuration file and navigate to the **[mcu z]** section.  Modiffy the "serial: /dev/serial" line and paste in the controller path so that is looks like the following: `serial: /dev/serial/by-id/usb-Klipper_lpc1768_0650000AA39C48AFABD4395DC22000F5-if00`
 *  Exit the text editor with CTRL-X  and save when prompted.
 
 ### Updating Printer Specific Settings
 
-1. Open ~/printer.cfg file again and scan through the file.
+1. [Open](#editing-printercfg) printer.cfg file again and scan through the file.
 2. Locate **[stepper_x]**.  Uncomment the _position\_endstop_ and _position\_max_ that corresponds to your printer's size and delete the other options to prevent confusion.
 3. Under **[tmcXXXX stepper_x]**, replace XXXX with either 2208 or 2209 to match the type of TMC drivers that are installed.  For example, _[tmc2209_ _stepper\_x]_ for TMC 2209 drivers.
 4. Repeat steps 2 & 3 for the **[stepper_y]** section.
@@ -126,9 +126,9 @@ This section only applies to printers with more than one controller.
 
 ### Restart to take effect
 
-Under Octoprint's terminal tab type `FIRMWARE_RESTART` and press enter to send the command to restart Klipper.
+Under Mainsail or fluidd's console, or Octoprint's terminal tab type `FIRMWARE_RESTART` and press enter to send the command to restart Klipper.
 
-The terminal window should show the following:
+The console window should show the following:
 
 ```
 Recv: // Klipper state: Disconnect
