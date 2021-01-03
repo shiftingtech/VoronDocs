@@ -5,6 +5,9 @@
 open an ssh session on your pi
 
 Download the appropriate  Voron base configuration file, by entering the command:
+
+_note: these are long commands, and likely wrap onto two lines on your display.  however, each is only a single command, and should be entered as a single command in your terminal.  copying and pasting is strongly recommended_
+
 * V0 SKR mini e3 V1.2:
 
 	`wget https://raw.githubusercontent.com/VoronDesign/Voron-0/master/VORON-0/Firmware/SKR_E3_Mini_1.2/printer.cfg -D ~/klipper/config/`
