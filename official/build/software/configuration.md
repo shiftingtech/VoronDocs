@@ -124,6 +124,22 @@ This section only applies to printers with more than one controller.
 > 
 > [Calculating Driver Current Settings](../../../community/howto/120decibell/calculating_driver_current.md)
 
+### Additional Changes: MainsailOS only
+1. Add the following entry to your printer.cfg:
+```
+[include mainsail.cfg]
+```
+2.  Add the macros to your printer.cfg described in the [wiki](https://docs.mainsail.app/necessary-configuration#macros)
+
+### Additional Changes: FluiddOS only
+
+1.  Add the following entries to your printer.cfg:
+```
+[include client.cfg]
+[include client_macros.cfg]
+```
+
+
 ### Restart to take effect
 
 Under Mainsail or fluidd's console, or Octoprint's terminal tab type `FIRMWARE_RESTART` and press enter to send the command to restart Klipper.
