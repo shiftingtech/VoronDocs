@@ -18,6 +18,8 @@ _note: It is a good idea to use a premium SDcard from a reputable manufacturer s
     * If your network supports bonjour, the pi should show up as `fluiddpi.local`
     * If your network automatically assigns DNS hostnames, it may simply show up as `fluiddpi`
     * Failing these two options, you may need to check your router's DHCP server, and find out what IP address as been assigned to the device.
+7. Also connect to your pi in a web browser:  [http://fluiddpi.local](http://fluiddpi.local] or whatever you determined the host name/ip to be in the previous step
+8.  When you first connect, fluiddpi will ask you to "provide the moonraker api uri":  enter the same host name or IP address once more.  (`fluiddpi.local`)
 
 > ### Related community documentation
 >
