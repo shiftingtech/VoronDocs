@@ -6,7 +6,9 @@ Community-generated documentation for the many items that the official guide may
 |---|---|
 | [Calculating Driver Current Settings](./120decibell/calculating_driver_current.md) | 120decibell |
 | [Chamber Temperature Exhaust Fan](./alchemyEngine/chamber_temperature_exhaust_fan.md) | alchemyEngine |
+| [SSH Tutorial](./shiftingtech/ssh.md) | ShiftingTech |
 | [Z Endstop Configuration](./120decibell/z_endstop_configuration.md) | 120decibell |
+
 
 
 ### External Links
