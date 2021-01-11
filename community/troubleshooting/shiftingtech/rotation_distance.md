@@ -107,7 +107,8 @@ You will need to update all stepper motor related sections of your printer.cfg. 
 
 ### `[stepper_z]`, `[stepper_z1]`, `[stepper_z2]`, `[stepper_z3]`
 * Remove the `step_distance: ` line
-* Add the line `rotation_distance: 8`
+* Add the line `rotation_distance: 40`
+* Add the line `gear_ratio: 80:16`
 * Add the line `microsteps: 16`   (if you have a microstepping other than 16 in your tmc* section, use the same number here)
 * Only for 0.9 degree steppers: add the line `full_steps_per_rotation:400`
 
