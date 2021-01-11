@@ -40,7 +40,7 @@ You may add additional wires to your cable chains as a replacement in case of wi
 Buy some cable holders (e.g. with adhesive) to organize your cables in the electronics compartment. Keep in mind that the adhesive fails over time due to exposure to above room temperature. Cables can be hidden in the rails. Optionally print cable covers for the rails.
 
 ## DC Power Supply Wiring
-Many of the latest generation of Voron printers spec the use of two or more independent power supplies.  That can include 24V, 5V, and 12V power supplies sepending on configuration.
+Many of the latest generation of Voron printers spec the use of two or more independent power supplies.  That can include 24V, 5V, and 12V power supplies depending on configuration.
 
 **Important!**  Connect the DC 0V (typically labelled V-) on all of your DC power supplies together to ensure they all have the same voltage reference.  If this is not done then it may be difficult to diagnose issues (devices may not turn on or may be damaged due to exceeding voltage limits).
 

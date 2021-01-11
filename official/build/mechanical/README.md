@@ -49,6 +49,8 @@
 
 [V0 Pocketwatch Manual](./manuals/VORON_Pocketwatch_Assembly_Manual.pdf)
 
+[V0 Dozuki Guides](https://voron.dozuki.com/c/Voron_0)
+
 ## V1
 
 ### Current
@@ -58,6 +60,8 @@
 ### Historical
 
 [Previous Versions](./manuals/historical)
+
+[V1.6 Dozuki Guides](https://voron.dozuki.com/c/Voron_1.6)
 
 ## V2
 

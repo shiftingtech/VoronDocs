@@ -1,5 +1,11 @@
 # About Voron
 
+The original goal of the VORON project, back in 2015, was to create a no-compromise 3D printer that was fun to assemble and a joy to use. It had to be quiet, clean, pretty, and continue to operate 24 hours a day without requiring constant fiddling. In short a true home micro-manufacturing machine without a hefty price tag. It took over a year in development, with every part being redesigned, stress tested and optimized. Shortly after the release a vibrant community formed around the project and continues to grow today. This community is part of what makes VORON such a special experience.
+
+What was once a one-person operation has grown into a small tight-knit group of engineers united under a common design ethos. We're dedicated to creating production-quality printers you can assemble in your kitchen. It's this passion and dedication that drive us to push the boundaries just a little further. We build space shuttles with gardening tools so anyone can have a space shuttle of their own.
+
+Welcome to VORON Design
+
 ### Motion System
 
 All Voron printers are built using CoreXY or CoreXZ configurations to reduce the amount of moving mass, allowing increased acceleration and speeds. Depending on the printer, linear rails (MGN7, MGN9, MGN12) or linear rods may be used along the X, Y, and/or Z axes. Gates 6mm and/or 9mm belts are used for movement; genuine Gates Unitta belts are recommended over generic versions for improved reliability and performance. A simple stack of flanged F695 bearings are often used as smooth belt idlers, as the bearings are much larger than the more common GT2 idlers. This provides increased service life.

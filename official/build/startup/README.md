@@ -18,12 +18,27 @@ To verify that each stepper motor is operating correctly, send the following com
 
 Run this command for each of the motors:
 
+### V0, SW
 * stepper_x
 * stepper_y
 * stepper_z
-* stepper_z1 (V2)
-* stepper_z2 (V2)
-* stepper_z3 (V2)
+* extruder
+
+### V1, Legacy
+* stepper_x
+* stepper_y
+* stepper_z
+* stepper_z1 
+* extruder
+
+### V2
+* stepper_x
+* stepper_y
+* stepper_z
+* stepper_z1   
+* stepper_z2   
+* stepper_z3   
+* extruder
 
 This command will move each motor UP first and then DOWN 3 times, one second apart.  If the steppers do not move or make strange noises, check the wiring.  Be sure to watch the Z motion to ensure the direction is correct.  If the Z motor(s) do not move in the correct directions, invert the DIR pin on the printer configuration.
 

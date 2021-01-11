@@ -6,6 +6,7 @@
 | [Klipper Common Errors](./eddie/klipper_common_errors.md) | eddie |
 | [printer.cfg Changes](./shiftingtech/printer.cfg_changes.md) | shiftingtech |
 | [Rail Misalignment Causing Twist](./badnoob/rail_misalignment_causing_twist.md) | badnoob |
+| [Twisted X Extrusion Diagnostics](./bryansj/twisted_x_extrusion_diagnostics.md) | Bryansj |
 
 ## Still Needed
 

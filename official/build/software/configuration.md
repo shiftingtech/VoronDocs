@@ -14,14 +14,28 @@ Download the respective Voron base configuration file from the following links:
 
 Using a secure file transfer program (WinSCP, Cyberduck, Notepad++, NppFT, BBEdit, scp), transfer the downloaded file to your Raspberry Pi into the folder `~/klipper/config`.
 
-Copy the downloaded file into place with `cp ~/klipper/config/FILENAME_OF_VORON_CONFIG.cfg ~/printer.cfg`
+**Mainsail & Fluidd**:Copy the downloaded file into place with `cp ~/klipper/config/FILENAME_OF_VORON_CONFIG.cfg ~/klipper_config/printer.cfg`
 
-**Note:** There are many ways of editing the config file that vary by personal preference.  Using Nano editor through SSH is simple but not always user friendly.  Notepad++ with the NppFTP plugin (Windows) or bbEdit (macOS) are user friendlier alternatives.  
+**Octoprint**:Copy the downloaded file into place with `cp ~/klipper/config/FILENAME_OF_VORON_CONFIG.cfg ~/printer.cfg`
+
+
+## Editing printer.cfg
+**Note:** There are many ways of editing the config file that vary by personal preference.  Mainsail & Fluidd both offer built in printer.cfg editors. Using Nano editor through SSH is simple but not always user friendly.  Notepad++ with the NppFTP plugin (Windows) or bbEdit (macOS) are user friendlier alternatives.  
+
+* Mainsail:  Click "Settings", "Machine", then on the "printer.cfg"
+* Fluidd: Click "Printer", then "printer.cfg", and choose "edit" from the menu that appears
 
 * [Notepad++ Information](./notepadplusplus.md)
 * [bbEdit Information](./bbedit.md)
 
-Review the configuration file by running `nano ~/printer.cfg`
+* Nano: The nano command is slightly different, depending on whether you are using Mainsail, Fluidd, or Octoprint
+	* **Mainsail & Fluidd**: `nano ~/klipper_config/printer.cfg`
+	* **Octoprint**:`nano ~/printer.cfg`
+	
+
+
+## Review printer.cfg
+There are a variety of entries in printer.cfg which will need to be edited to match your particular build.  Open it with your choice of editors, and go through it carefully.  While the key edits are highlighted below, you should read the entire file, and make sure you have found everything which needs your attention.
 
 **Klipper is CASE SENSITIVE.  Be sure everything except comments is LOWER CASE.**
 
@@ -73,8 +87,8 @@ Locate the section starting with [mcu].  The V2 will have an additional section 
 **Note:** If the device identifier has the word 'marlin' in it, the Klipper firmware is not loaded properly.  Go back and [re-load the Klipper firmware](./software#firmware-flashing) before continuing.
 
 * Copy the device ID (e.g. _usb-Klipper\_lpc1768\_1FB0000802094AAF07825E5DC52000F5-if00_) from the terminal window and paste into a temporary text file.
-*  Open the configurtion file with `nano ~/printer.cfg` and navigate to the **[mcu]** section.  Modiffy the "serial: /dev/serial" line and paste in the controller path so that is looks like the following: `serial: /dev/serial/by-id/usb-Klipper_lpc1768_1FB0000802094AAF07825E5DC52000F5-if00`
-*  Exit the text editor with CTRL-X  and save when prompted.
+*  [Open](#editing-printercfg) the configuration file and navigate to the **[mcu]** section.  Modiffy the "serial: /dev/serial" line and paste in the controller path so that is looks like the following: `serial: /dev/serial/by-id/usb-Klipper_lpc1768_1FB0000802094AAF07825E5DC52000F5-if00`
+*  Exit the text editor, and save when prompted.
 
 ### Update Second Controller Path (V2)
 
@@ -89,12 +103,12 @@ This section only applies to printers with more than one controller.
 **Note:** If the device identifier has the word 'marlin' in it, the Klipper firmware is not loaded properly.  Go back and re-load the Klipper firmware before continuing.
 
 * Identify the new device ID (e.g. _usb-Klipper\_lpc1768\_0650000AA39C48AFABD4395DC22000F5-if00_) and copy from the terminal window and paste into a temporary text file.
-*  Open the configurtion file with `nano ~/printer.cfg` and navigate to the **[mcu z]** section.  Modiffy the "serial: /dev/serial" line and paste in the controller path so that is looks like the following: `serial: /dev/serial/by-id/usb-Klipper_lpc1768_0650000AA39C48AFABD4395DC22000F5-if00`
+*  [Open](#editing-printercfg) the configuration file and navigate to the **[mcu z]** section.  Modiffy the "serial: /dev/serial" line and paste in the controller path so that is looks like the following: `serial: /dev/serial/by-id/usb-Klipper_lpc1768_0650000AA39C48AFABD4395DC22000F5-if00`
 *  Exit the text editor with CTRL-X  and save when prompted.
 
 ### Updating Printer Specific Settings
 
-1. Open ~/printer.cfg file again and scan through the file.
+1. [Open](#editing-printercfg) printer.cfg file again and scan through the file.
 2. Locate **[stepper_x]**.  Uncomment the _position\_endstop_ and _position\_max_ that corresponds to your printer's size and delete the other options to prevent confusion.
 3. Under **[tmcXXXX stepper_x]**, replace XXXX with either 2208 or 2209 to match the type of TMC drivers that are installed.  For example, _[tmc2209_ _stepper\_x]_ for TMC 2209 drivers.
 4. Repeat steps 2 & 3 for the **[stepper_y]** section.
@@ -110,11 +124,27 @@ This section only applies to printers with more than one controller.
 > 
 > [Calculating Driver Current Settings](../../../community/howto/120decibell/calculating_driver_current.md)
 
+### Additional Changes: MainsailOS only
+1. Add the following entry to your printer.cfg:
+```
+[include mainsail.cfg]
+```
+2.  Add the macros to your printer.cfg described in the [wiki](https://docs.mainsail.app/necessary-configuration#macros)
+
+### Additional Changes: FluiddOS only
+
+1.  Add the following entries to your printer.cfg:
+```
+[include client.cfg]
+[include client_macros.cfg]
+```
+
+
 ### Restart to take effect
 
-Under Octoprint's terminal tab type `FIRMWARE_RESTART` and press enter to send the command to restart Klipper.
+Under Mainsail or fluidd's console, or Octoprint's terminal tab type `FIRMWARE_RESTART` and press enter to send the command to restart Klipper.
 
-The terminal window should show the following:
+The console window should show the following:
 
 ```
 Recv: // Klipper state: Disconnect
